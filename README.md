@@ -21,3 +21,4 @@ Tracking my progress from https://javascript30.com
     ```
 
 - Added CSS style `-webkit-tap-highlight-color: transparent;` to the `html` element so the click event does not highlight the text
+- Added CSS style `cursor: pointer` for the `key` div elements to showcase that a user can click on a key
