@@ -39,3 +39,4 @@ Tracking my progress from https://javascript30.com
   const h = hoursDegrees + ((nextHoursDegrees - hoursDegrees) * (minutes / 60));
   hourHand.style.transform = `rotate(${h}deg)`;
   ```
+  ![Clock](https://github.com/kevinguebert/Javascript30/blob/master/02%20-%20JS%20and%20CSS%20Clock/clock.gif?raw=true)
