@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timer with CSS Variables</title>
+</head>
+<body>
+  <div class="background" id="background" name="width" value="#ffc600"></div>
+
+  <div class="textSection">
+
+    <h3 id="time">60</h3>
+    <span class="button" id="button">></span>
+  </div>
+  <style>
+
+    :root {
+      --base: #ffc600;
+      --width: 100%;
+      --textColor: #fff;
+    }
+
+    .background {
+      background: var(--base);
+      width: var(--width);
+      height:100%;
+      position:absolute;
+      top:0;
+      left:0;
+    }
+
+    /*
+      misc styles, nothing to do with CSS variables
+    */
+
+    body {
+      text-align: center;
+    }
+
+    h3 {
+      margin:0;
+    }
+
+    .button {
+      cursor: pointer;;
+    }
+
+    .textSection {
+      font-size:40px;
+      color: var(--textColor);
+      position: absolute;
+      bottom:0;
+      left:50%;
+    }
+
+  </style>
+
+  <script>
+    var total = 60;
+    var timer;
+    function startTimer() {
+      timer = setInterval(updateBackground, 1000);
+    }
+
+    function updateBackground() {
+      total--;
+      document.getElementById('time').innerHTML = total;
+      if(total < 0 ) {
+        resetScreen();
+        return;
+      }
+
+      if(total < 33) {
+        document.documentElement.style.setProperty('--textColor', "#000");
+      }
+      var windowWith = window.innerWidth;
+      var newWidth = (total * windowWith) / 60;
+      document.documentElement.style.setProperty(`--width`, newWidth + "px");
+    }
+
+    function resetScreen() {
+      total = 60;
+      document.getElementById('time').innerHTML = total;
+      window.clearTimeout(timer);
+      document.documentElement.style.setProperty(`--width`, window.innerWidth + "px");
+    }
+
+    document.getElementById('button').addEventListener('click', function() {
+      if(timer) {
+        window.clearTimeout(timer);
+        resetScreen();
+      }
+      startTimer();
+    });
+
+  </script>
+
+</body>
+</html>
