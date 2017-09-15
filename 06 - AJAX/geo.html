@@ -35,6 +35,7 @@ function findMatches(wordToMatch, cities) {
     const regex = new RegExp(wordToMatch, 'gi');
     return place.city.match(regex) || place.state.match(regex);
   });
+  return wordMatches.filter(place)
   console.log(wordMatches);
   return wordMatches;
 }
